@@ -17,7 +17,7 @@ st.markdown(
 
 st.header('TAX REVENUE ANALYSIS')
 
-df=pd.read_csv(r'C:\Users\vaish\OneDrive\Desktop\Fluentgrid\Cleaned.csv')
+df=pd.read_csv('Cleaned.csv')
 
 years = list(df['FISCAL_YEAR'].unique())
 years.sort(reverse=True)
