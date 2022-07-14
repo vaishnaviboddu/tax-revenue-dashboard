@@ -5,6 +5,18 @@ import matplotlib.pyplot as plt
 
 st.set_page_config(layout="wide",page_title="Tax Revenue Data")
 
+st.markdown(
+    """
+    <style>
+    .main {
+    background-color:#FBF9E6;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True)
+
+st.header('TAX REVENUE ANALYSIS')
+
 df=pd.read_csv(r'C:\Users\vaish\OneDrive\Desktop\Fluentgrid\Cleaned.csv')
 
 years = list(df['FISCAL_YEAR'].unique())
@@ -12,6 +24,7 @@ years.sort(reverse=True)
     
 acc_category  = list(df['ACC_CODE'].unique())
 acc_category.append('ALL')
+acc_category[0],acc_category[1]=acc_category[1],acc_category[0]
 
 area  = list(df['NAME'].unique())
 area.append('ALL')
@@ -112,7 +125,7 @@ with col2:
     df_group_area.replace(np.nan,0,inplace=True)
     df_group_area.drop(df_group_area.index[10:],inplace=True)
     
-    fig5 = plt.figure(figsize=(7,4.05))
+    fig5 = plt.figure(figsize=(7,3.75))
     plt.bar(df_group_area['NAME'], df_group_area['TODAYCOLL']/10000000,alpha=0.5)
     plt.xlabel('Ward',fontsize = 14)
     plt.ylabel('Revenue (in crores)',fontsize = 14)
